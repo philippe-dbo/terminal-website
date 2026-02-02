@@ -397,7 +397,7 @@ export function Terminal() {
         current = current.children;
       }
       if (typeof current === "object" && segment in current) {
-        const node = (current as Record<string, FileSystemNode>)[segment];
+        const node: FileSystemNode = (current as Record<string, FileSystemNode>)[segment];
         if (node.type === "directory" && node.children) {
           current = node.children;
         } else {
@@ -466,7 +466,7 @@ export function Terminal() {
               if (!current || !(part in current)) {
                 return { output: `cd: ${target}: No such directory`, isError: true };
               }
-              const node = current[part];
+              const node: FileSystemNode = current[part];
               if (node.type !== "directory") {
                 return { output: `cd: ${target}: Not a directory`, isError: true };
               }
@@ -507,7 +507,7 @@ export function Terminal() {
               if (!current || !(part in current)) {
                 return { output: `cat: ${filename}: No such file`, isError: true };
               }
-              const node = current[part];
+              const node: FileSystemNode = current[part];
               if (node.type !== "directory" || !node.children) {
                 return { output: `cat: ${filename}: No such file`, isError: true };
               }
@@ -518,7 +518,7 @@ export function Terminal() {
               return { output: `cat: ${filename}: No such file`, isError: true };
             }
 
-            const node = current[file];
+            const node: FileSystemNode = current[file];
             if (node.type !== "file") {
               return { output: `cat: ${filename}: Is a directory`, isError: true };
             }
@@ -531,7 +531,7 @@ export function Terminal() {
             return { output: `cat: ${filename}: No such file`, isError: true };
           }
 
-          const node = dir[filename];
+          const node: FileSystemNode = dir[filename];
           if (node.type !== "file") {
             return { output: `cat: ${filename}: Is a directory`, isError: true };
           }

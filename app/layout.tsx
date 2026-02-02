@@ -1,15 +1,16 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _geist = GeistSans;
+const _geistMono = GeistMono;
 
 export const metadata: Metadata = {
   title: 'Philippe des Boscs',
-  description: 'Software Engineer - Personal Terminal',
+  description: 'Personal Terminal',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -37,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${_geist.className} ${_geistMono.className} antialiased`}>
         {children}
         <Analytics />
       </body>

@@ -1,11 +1,14 @@
+const repo = "terminal-website";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: "export",
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
-}
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}/`,
+};
 
-export default nextConfig
+export default nextConfig;
